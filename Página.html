@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Navegacion con tabs</title>
+	<link rel="stylesheet" href="estilos.css">
+	<link rel="stylesheet" href="font-awesome.css">
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="main.js"></script>
+
+<style>
+.button {
+	background-color: rgb(9, 132, 255); /* Green */
+	border: none;
+	color: rgb(255, 255, 255);
+	padding: 15px 30px;
+	text-align: center;
+	text-decoration: none;
+	display: flow;
+	font-size: 16px;
+	margin-bottom: 0px;
+  }
+
+
+
+</style>
+
+
+</head>
+<body>
+	<div class="wrap">
+		<ul class="tabs">
+			<li><a href="#tab1"><span class="fa fa-globe"></span><span class="tab-text">Sitios Web</span></a></li>
+			<li><a href="#tab2"><span class="fa fa-institution"></span><span class="tab-text">Tesis</span></a></li>
+			<li><a href="#tab3"><span class="fa fa-archive"></span><span class="tab-text">Hojas de Seguridad de reactivos</span></a></li>
+			<li><a href="#tab4"><span class="fa fa-list"></span><span class="tab-text"></span>Resúmenes</a></li>
+			<li><a href="#tab5"><span class="fa fa-laptop"></span><span class="tab-text">Electrónicos</span></a></li>
+			<li><a href="#tab6"><span class="fa fa-book"></span><span class="tab-text">Libro, sin editor</span></a></li>
+			<li><a href="#tab7"><span class="fa fa-book"></span><span class="tab-text">Capítulo de un libro, con Editor</span></a></li>
+			<li><a href="#tab8"><span class="fa fa-file"></span><span class="tab-text">Revista No Científica Periódico</span></a></li>
+		</ul>
+
+		<div class="secciones">
+			<article id="tab1">
+			<div class="box">	
+				<h1>Sitios Web</h1>
+					<div class="input">
+					Nombre del sitio Web : <input type="text" name="str" size="100"> <br>
+					Empresa : <input type="text" name="str" size="100"> <br>
+					Link : <input type="text" name="str" size="100"> <br>
+					</div>
+				<button class= "button" onclick="enterSitioWeb()">Mostrar referencia bibliográfica</button>
+				<div class="resultado"><br>
+				<p id= "resultado" class="display">Resultado </p> 
+				
+				</div>    
+				<button  class="button" onclick="copiarAlPortapapeles('resultado')">Copiar al Portapapeles</button>
+				
+				<p class="resultado">* Es posible no poner empresa</p>
+				<div class="image1"> </div>
+			</div>
+			</article>
+			<script>
+				function copiarAlPortapapeles(id_elemento) {
+					var aux = document.createElement("input");
+					aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+					document.body.appendChild(aux);
+					aux.select();
+					document.execCommand("copy");
+					document.body.removeChild(aux);
+				}
+
+
+				 var txt = null;
+
+				function enterSitioWeb(){
+				txt = document.getElementsByName("str")[0].value;
+				txt2 = document.getElementsByName("str")[1].value;
+				txt3 = document.getElementsByName("str")[2].value;
+				var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+				var f=new Date();
+				txt4 =  meses[f.getMonth()] + " " + f.getFullYear();
+				
+				if (txt2==='') {
+					document.getElementById("resultado").innerHTML = txt + ', '+txt3+' ( Consultado ' + txt4 + ' )';
+				} else {
+					document.getElementById("resultado").innerHTML = txt + ', '+txt2+', '+txt3+' ( Consultado ' + txt4 + ' )';	
+				}
+				
+				}
+			</script>
+
+<!-- --------------------	TESIS	------------------------------		 -->
+		<article id="tab2">
+		<div class="box">	
+			<h1>Tesis</h1>
+				<div class="input">
+				Autor de Tesis <small> " Can Aké, J. R "</small> :  <input type="text" name="str2" size="100"> <br> 
+				Título : <input type="text" name="str2" size="100"> <br>
+				Institución : <input type="text" name="str2" size="100"> <br>
+				Provincia :  <input type="text" name="str2" size="100"> <br>
+				País : <input type="text" name="str2" size="100"> <br>
+				Fecha de publicación  <small>" Marzo 2003 " :</small> <input type="text" name="str2" size="100"> <br> 
+				<div class="selector" >
+						Tipo de Tesis : 
+					<select name="test" id="str2" onchange="entertesis()">
+						 <option value="" disabled selected> Seleccione</option>
+						<option>Licenciatura</option>
+						<option>Maestría</option>
+						<option>Doctorado</option>
+					</select>
+				</div>
+				</div>
+
+
+			<button class= "button" onclick="entertesis()">Mostrar referencia bibliográfica</button>
+			<div class="resultado"><br>
+			<p id= "resultado2" class="display">Resultado </p> 
+			<button  class="button" onclick="copiarAlPortapapeles('resultado2')">Copiar al Portapapeles</button>
+			</div>    
+			<div class="image2"></div>
+		</div>
+		</article>
+		<script>
+			function copiarAlPortapapeles(id_elemento) {
+				var aux = document.createElement("input");
+				aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+				document.body.appendChild(aux);
+				aux.select();
+				document.execCommand("copy");
+				document.body.removeChild(aux);
+			}
+
+
+		  var txt = null;
+		  var txt2 = null;
+		  var txt3 = null;
+		  var txt4 = null;
+		  var txt5 = null; 
+		  var txt6 = null;
+		  var txt7 = null; 
+			function entertesis(){
+			txt = document.getElementsByName("str2")[0].value;
+			txt2 = document.getElementsByName("str2")[1].value;
+			 txt3 = document.getElementsByName('test')[0].value;
+			 txt4 = document.getElementsByName("str2")[2].value;
+			 txt5 = document.getElementsByName("str2")[3].value;
+			 txt6 = document.getElementsByName("str2")[4].value;
+			 txt7 = document.getElementsByName("str2")[5].value;	
+			document.getElementById("resultado2").innerHTML = txt + '. ' + txt2+'. '+'Tesis de '+txt3+', '+txt4+', '+txt5+', '+txt6+', '+txt7+'.';	
+			}
+		</script>
+		
+	</article>
+
+	<!-------------------- HOJAS DE SEGURIDAD DE REACTIVOS Y MATERIALES -------------------------------------------------  -->
+			<article id="tab3">
+
+					<div class="box">	
+							<h1>Hoja de Seguridad de Reactivos y Materiales</h1>
+								<div class="input">
+								Nombre del Reactivo <small> " Ethylene Glycol"</small> :  <input type="text" name="str3" size="100"> <br> 
+								Nombre del Datasheet  : <input type="text" name="str3" size="100"> <br>
+								No. datasheet <small>"E5125"</small> : <input type="text" name="str3" size="100"> <br>
+								Empresa : <input type="text" name="str3" size="100"> <br>
+								Lugar <small>" Phillipsburg, Nj "</small> :  <input type="text" name="str3" size="100"> <br>
+								Fecha datasheet <small> "Feb. 25"</small> : <input type="text" name="str3" size="100"> <br>
+								Año datasheet : <input type="text" name="str3" size="100"> <br>
+								URL :  <input type="text" name="str3" size="100"> <br> 
+								
+								</div>
+				
+							<button class= "button" onclick="enterhoja()">Mostrar referencia bibliográfica</button>
+							<div class="resultado"><br>
+							<p id= "resultado3" class="display">Resultado </p> 
+							<button  class="button" onclick="copiarAlPortapapeles('resultado3')">Copiar al Portapapeles</button>
+							</div>    
+							<div class="image3"></div>
+						</div>
+
+						</article>
+						<script>
+							function copiarAlPortapapeles(id_elemento) {
+								var aux = document.createElement("input");
+								aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+								document.body.appendChild(aux);
+								aux.select();
+								document.execCommand("copy");
+								document.body.removeChild(aux);
+							}
+				
+				
+						  var txt = null;
+						  var txt2 = null;
+						  var txt3 = null;
+						  var txt4 = null;
+						  var txt5 = null; 
+						  var txt6 = null;
+						  var txt7 = null; 
+						  var txt8 = null;
+						  var txt9 = null;
+							function enterhoja(){
+							txt = document.getElementsByName("str3")[0].value;  // Nombre
+							txt2 = document.getElementsByName("str3")[1].value; // Nombre datasheet
+							txt3 = document.getElementsByName("str3")[2].value; // No. datasheet
+							txt4 = document.getElementsByName("str3")[3].value; // Empresa
+							txt5 = document.getElementsByName("str3")[4].value; // Lugar 
+							txt6 = document.getElementsByName("str3")[5].value; // Fecha datasheet
+							txt7 = document.getElementsByName("str3")[6].value; // Año datasheet
+							txt8 = document.getElementsByName("str3")[7].value; // URL
+
+							var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+							var f=new Date();
+							txt9 =  meses[f.getMonth()] + " " + f.getFullYear();
+
+							document.getElementById("resultado3").innerHTML = txt + '; ' + txt2 +' '+'No. '+ txt3 +'; '+txt4+': '+txt5+', '+'('+txt6+') '+txt7+', '+ txt8+', ' + '(consultado '+txt9+'). ';	                  
+							}
+						</script>
+					
+			</article>
+<!-- ---------------------------------- Resúmenes ----------------------------------- -->
+<article id="tab4">
+	
+	<div class="box">	
+			<h1>Resumen tomado de una recopilación impresa</h1>
+
+				<div class="input">
+					
+				Autor <small> " Ferch, H "</small> :  <input type="text" name="str4" size="100"> <br> 
+				Título : <input type="text" name="str4" size="100"> <br>
+				*Nombre <small>"Plastics,Paint Rubber"</small_> : <input type="text" name="str4" size="100"> <br>
+				Año del resumen <small>"1966, 10"</small>  <input type="text" name="str4" size="100"> <br>
+				Intervalo de Páginas <small>"85-86"</small> : <input type="text" name="str4" size="100"> <br>
+				Abstract <small>" Chem. Abstr. " :</small> <input type="text" name="str4" size="100"> <br> 
+				Año del escrito : <input type="text" name="str4" size="100"> <br> 
+				Num <small>"17198g"</small> : <input type="text" name="str4" size="100"> <br>
+
+				</div>
+
+
+			<button class= "button" onclick="enterResumen()">Mostrar referencia bibliográfica</button>
+			<div class="resultado"><br>
+			<p id= "resultado4" class="display">Resultado </p> 
+			<button  class="button" onclick="copiarAlPortapapeles('resultado4')">Copiar al Portapapeles</button>
+			</div>    
+			<div class="image3"></div>
+		</div>
+		</article>
+		<script>
+			function copiarAlPortapapeles(id_elemento) {
+				var aux = document.createElement("input");
+				aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+				document.body.appendChild(aux);
+				aux.select();
+				document.execCommand("copy");
+				document.body.removeChild(aux);
+			}
+
+
+			var autor = null;
+			var titulo = null;
+			var nombre = null;
+			var anio1 = null;
+			var intervalo = null; 
+			var abstract = null;
+			var anio2 = null; 
+			var pag = null;
+			function enterResumen(){
+			autor = document.getElementsByName("str4")[0].value;
+			titulo = document.getElementsByName("str4")[1].value;
+			nombre = document.getElementsByName("str4")[2].value;
+			anio1 = document.getElementsByName("str4")[3].value;
+			intervalo = document.getElementsByName("str4")[4].value;
+			abstract = document.getElementsByName("str4")[5].value;	
+			anio2 = document.getElementsByName("str4")[6].value;
+			pag = document.getElementsByName("str4")[7].value;
+			document.getElementById("resultado4").innerHTML = autor + '. ' + titulo +'. '+nombre+' '+anio1+', '+intervalo+'; '+abstract+', '+anio2+', '+ pag+'.';	
+			}
+		</script>
+
+</article>
+
+<!----------------------------------------------- Eléctronicos ------------------------------------------------------------>
+<article id="tab5">
+
+	
+				<div class="box">	
+						<h1>Electrónicos</h1>
+			
+							<div class="input">
+								
+							Nombre de la base de datos <small> " Gmelin "</small> :  <input type="text" name="str5" size="100"> <br> 
+							Institución : <input type="text" name="str5" size="100"> <br>
+							Número en base de datos  : <input type="text" name="str5" size="100"> <br>
+							Número de registro : <input type="text" name="str5" size="100"> <br>
+			
+							</div>
+			
+			
+						<button class= "button" onclick="enterElectronico()">Mostrar referencia bibliográfica</button>
+						<div class="resultado"><br>
+						<p id= "resultado5" class="display">Resultado </p> 
+						<button  class="button" onclick="copiarAlPortapapeles('resultado5')">Copiar al Portapapeles</button>
+						</div>    
+						<div class="image5"></div>
+					</div>
+					</article>
+					<script>
+						function copiarAlPortapapeles(id_elemento) {
+							var aux = document.createElement("input");
+							aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+							document.body.appendChild(aux);
+							aux.select();
+							document.execCommand("copy");
+							document.body.removeChild(aux);
+						}
+
+						var txt = null;
+						var txt2 = null;
+						var txt3 = null;
+						var txt4 = null;
+
+						function enterElectronico(){
+						txt = document.getElementsByName("str5")[0].value; // Nombre
+						txt2 = document.getElementsByName("str5")[1].value; // institución
+						txt3 = document.getElementsByName("str5")[2].value; // Número en base de datos
+						txt4 = document.getElementsByName("str5")[3].value; // Número de registro
+						var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+						var f=new Date();
+						txt5 =  meses[f.getMonth()] + " " + f.getFullYear();
+
+						document.getElementById("resultado5").innerHTML = txt +' Database; ' + txt2 +' (consultado '+txt5+'), '+'número en la base de datos '+ txt3 +', '+'Número de registro '+txt+' '+txt4+'.';	
+						}
+					</script>
+			
+
+</article>
+ <!----------------------------------------- LIBRO; SIN EDITOR --------------------------------------->
+<article id="tab6">
+		<h1>6</h1>
+		<div class="box">	
+			<h1>Libro escrito por uno o más autores, SIN EDITOR</h1> <br>
+
+				<div class="input">
+					
+				Nombre de autor(es) <small> "Beall, H; Tim, J"</small> :  <input type="text" name="str6" size="100"> <br> 
+				Título del Libro : <input type="text" name="str6" size="100"> <br>
+				Edición, sólo número (opcional) : <input type="text" name="str6" size="100"> <br>
+				Lugar de publicación <small>"Springer-Verlag: Berlín"</small> : <input type="text" name="str6" size="100"> <br>
+				Año : <input type="text" name="str6" size="100"> <br>
+				Volumen (opcional) : <input type="text" name="str6" size="100"> <br>
+				Páginas consultadas : <small>"67-89"</small>  <input type="text" name="str6" size="100"><br> 
+
+				</div>
+
+
+			<button class= "button" onclick="enterLibroNOeditor()">Mostrar referencia bibliográfica</button>
+			<div class="resultado"><br>
+			<p id= "resultado6" class="display">Resultado </p> 
+			<button  class="button" onclick="copiarAlPortapapeles('resultado6')">Copiar al Portapapeles</button>
+			<p>* No dejar ambas casillas opcionales en blanco</p>
+			</div>    
+			<div class="image6"></div>
+		</div>
+		</article>
+		<script>
+			function copiarAlPortapapeles(id_elemento) {
+				var aux = document.createElement("input");
+				aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+				document.body.appendChild(aux);
+				aux.select();
+				document.execCommand("copy");
+				document.body.removeChild(aux);
+			}
+
+			var txt = null;
+			var txt2 = null;
+			var txt3 = null;
+			var txt4 = null;
+			var txt5 = null;
+			var txt6 = null;
+			var txt7 = null;
+
+			function enterLibroNOeditor(){
+			txt = document.getElementsByName("str6")[0].value; // Nombre
+			txt2 = document.getElementsByName("str6")[1].value; // Titulo
+			txt3 = document.getElementsByName("str6")[2].value; // Edición
+			txt4 = document.getElementsByName("str6")[3].value; // Lugar
+			txt5 = document.getElementsByName("str6")[4].value; // Año
+			txt6 = document.getElementsByName("str6")[5].value; // Volumen
+			txt7 = document.getElementsByName("str6")[6].value; // Páginas
+				if(txt6 === ''){
+				document.getElementById("resultado6").innerHTML = txt +'. ' + txt2 +', '+ txt3 +'a ed.'+'; '+txt4+', '+txt5+'; '+'pp '+txt7+'.';	
+
+				}else if(txt3 === ''){
+					// Segunda opción 
+					document.getElementById("resultado6").innerHTML = txt +'. ' + txt2 +'; '+ txt4 +', '+txt5+'; '+'Vol. '+txt6+', '+'pp '+txt7+'.';	
+
+				}else if(txt3==='' && txt6 ===''){
+					alert('No dejar vacío ambas casillas opcionales');
+				}
+			}
+		</script>
+
+
+</article>
+<!-------------------------------------------------- LIBRO CON EDItor ---------------------------------------------------------------------------------------------------> 
+<article id="tab7">
+		<h1>7</h1>
+		<div class="box">	
+			<h1>Capítulo de un libro perteneciente o no a una serie, Con editor</h1> <br>
+
+				<div class="input">
+					
+				Nombre de autor(es) <small> "Beall, H; Tim, (J En caso de ser 2)"</small> :  <input type="text" name="str7" size="100"> <br> 
+				Nombre del Capítulo : <input type="text" name="str7" size="100"> <br>
+				Título del Libro : <input type="text" name="str7" size="100"> <br>
+				Nombre de editor(es):   <small>"Balick, M. J.; Eliz,E."</small> : <input type="text" name="str7" size="100"> <br>
+				Lugar de publicación :<small>"VHC: New York"</small> <input type="text" name="str7" size="100"> <br>
+				Año : <input type="text" name="str7" size="100"> <br>
+				Volumen : <small>(Opción 2)</small> <input type="text" name="str7" size="100"> <br>
+				Páginas consultadas : <small>"67-89"</small>  <input type="text" name="str7" size="100"><br> 
+
+				</div>
+
+
+			<button class= "button" onclick="enterLibroEditor()">Mostrar referencia bibliográfica</button>
+			<div class="resultado"><br>
+			<p id= "resultado7" class="display">Resultado </p> 
+			<button  class="button" onclick="copiarAlPortapapeles('resultado7')">Copiar al Portapapeles</button>
+			
+			</div>    
+			<div class="image7"></div>
+		</div>
+		</article>
+		<script>
+			function copiarAlPortapapeles(id_elemento) {
+				var aux = document.createElement("input");
+				aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+				document.body.appendChild(aux);
+				aux.select();
+				document.execCommand("copy");
+				document.body.removeChild(aux);
+			}
+
+			var txt = null;
+			var txt2 = null;
+			var txt3 = null;
+			var txt4 = null;
+			var txt5 = null;
+			var txt6 = null;
+			var txt7 = null;
+			var txt8 = null;
+
+			function enterLibroEditor(){
+			txt = document.getElementsByName("str7")[0].value; // Autores
+			txt2 = document.getElementsByName("str7")[1].value; // Capítulo
+			txt3 = document.getElementsByName("str7")[2].value; // Título 
+			txt4 = document.getElementsByName("str7")[3].value; // Editores
+			txt5 = document.getElementsByName("str7")[4].value; // Lugar
+			txt6 = document.getElementsByName("str7")[5].value; // Año
+			txt7 = document.getElementsByName("str7")[6].value; // Volumen
+			txt8 = document.getElementsByName("str7")[7].value; // páginas consultadas
+			// Casilla de volumen vacía (caso 1)
+				if(txt7 === ''){
+				document.getElementById("resultado7").innerHTML = txt +'. ' + txt2 +'. '+'En '+ txt3 +', '+txt4+', Eds.; '+txt5+', '+txt6+'; '+' pp'+txt8+'.';	
+
+				}else if(txt7 != ''){
+					// Segunda opción 
+				document.getElementById("resultado7").innerHTML = txt +'. ' + txt2 +'. '+'En '+ txt3 +'; '+txt4+', Eds.; '+txt5+', '+txt6+'; '+'Vol. '+txt7+','+' pp'+txt8+'.';	
+
+				}
+			}
+		</script>
+
+		
+</article>			
+
+<article id="tab8">
+		<h1>8</h1>
+		<div class="box">	
+			<h1>Periódico o Revista No Científica</h1> <br>
+
+				<div class="input">
+					
+				Nombre de autor(es) <small> "Fernández Andrade, J. N. "</small> :  <input type="text" name="str8" size="100"> <br> 
+				Título del apartado : <input type="text" name="str8" size="100"> <br>
+				Periódico o Revista : <input type="text" name="str8" size="100"> <br>
+				Día de publicación:   <small>"4"</small> : <input type="text" name="str8" size="100"> <br>
+				Mes de publicación :<small>"Feb"</small> <input type="text" name="str8" size="100"> <br>
+				Año : <input type="text" name="str8" size="100"> <br>
+				Páginas consultadas : <small>"67-89"</small>  <input type="text" name="str8" size="100"><br> 
+
+				</div>
+
+
+			<button class= "button" onclick="enterRevista()">Mostrar referencia bibliográfica</button>
+			<div class="resultado"><br>
+			<p id= "resultado8" class="display">Resultado </p> 
+			<button  class="button" onclick="copiarAlPortapapeles('resultado8')">Copiar al Portapapeles</button>
+			
+			</div>    
+			<div class="image8"></div>
+		</div>
+		</article>
+		<script>
+			function copiarAlPortapapeles(id_elemento) {
+				var aux = document.createElement("input");
+				aux.setAttribute("value", document.getElementById(id_elemento).innerHTML);
+				document.body.appendChild(aux);
+				aux.select();
+				document.execCommand("copy");
+				document.body.removeChild(aux);
+			}
+
+			var txt = null;
+			var txt2 = null;
+			var txt3 = null;
+			var txt4 = null;
+			var txt5 = null;
+			var txt6 = null;
+			var txt7 = null;
+			var txt8 = null;
+
+			function enterRevista(){
+			txt = document.getElementsByName("str8")[0].value; // Nombre
+			txt2 = document.getElementsByName("str8")[1].value; // Título
+			txt3 = document.getElementsByName("str8")[2].value; // Periódico
+			txt4 = document.getElementsByName("str8")[3].value; // Día
+			txt5 = document.getElementsByName("str8")[4].value; // Mes
+			txt6 = document.getElementsByName("str8")[5].value; // Año
+			txt7 = document.getElementsByName("str8")[6].value; // páginas consultadas
+			// Casilla de volumen vacía (caso 1)
+			document.getElementById("resultado8").innerHTML = txt +'. ' + txt2 +'. '+ txt3 +', '+ txt5 + '. ' +txt4+', '+txt6+', p '+txt7;	
+
+			}
+		</script>
+</article>			
+			
+		</div>
+	</div>
+</body>
+</html>

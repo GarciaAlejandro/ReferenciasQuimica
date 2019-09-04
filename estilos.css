@@ -1,0 +1,250 @@
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+
+.box{
+	position: absolute;
+	top: 82%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 1200px;
+	max-width: 95%;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 30px;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	border: none;
+	font-size: 20px;
+}
+h1{
+	margin-top: 0px;
+	margin-bottom: 1px;
+
+}
+
+.input{
+	text-align: left;
+	margin-left: 4%;
+}
+
+input[type=text]{
+	position: relative;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.75);
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	width: 70%;
+	margin-bottom: 10px;
+	 border-radius: 10px; 
+	 font-size: 20px;
+	color: white;
+	transition: .5s;
+
+}
+input[type=text]:focus{
+	box-shadow: 0 0 15px 0 rgb(9, 132, 255);
+	text-align: center;
+}
+
+.box select{
+	background: rgba(9, 132, 255);
+	color: rgb(255, 255, 255);
+	padding: 10px;
+	width: 150px;
+	height: 40px;
+	border: none;
+	font-size: 16px;
+	box-shadow: 0 0 0 rgba(150, 32, 32, 0.1);
+	margin-bottom: 100px;
+	-webkit-appearance: menulist-button;
+	text-align: center;
+
+}
+
+
+body{
+	background: rgb(109, 108, 108);
+	font-family: 'Open sans';
+	margin: 0px;
+}
+
+.wrap{
+	width: 100%;
+	height: 100% ;
+	max-width: 95%;
+	margin: 20px auto;
+
+}
+.resultado{
+	text-align-last: center;
+	margin-bottom: 10px;
+}
+ul.tabs{
+	width: 100%;
+	background: #363636;
+	list-style: none;
+	display: flex;
+}
+
+ul.tabs li{
+	width: 20%;
+}
+
+ul.tabs li a{
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	font-size: 16px;
+	text-align: center;
+	display: block;
+	padding: 20px 0px;
+}
+
+.active{
+	background: #0984CC;
+}
+
+ul.tabs li a .tab-text{
+	margin-left: 8px;
+}
+
+.secciones{
+	
+	width: 100%;
+	height: 100%;	
+	background: rgba(255, 255, 255);
+	padding: 550px;
+	background-image: url(hachi.jpeg);
+	background-repeat: repeat-x;
+	object-position: center ;
+	background-size: contain;
+
+	
+}
+.secciones article{
+	padding: 50px;
+}
+
+
+.image1{
+	width: 725px;
+	height: 100px;	
+	background: rgba(0, 0, 0,0);
+	background-image: url(SitiosWeb.jpg);
+	position: relative;
+	background-repeat: no-repeat;
+	object-position: center;
+	background-size: contain;
+
+}
+.image2{
+	width: 550px;
+	height: 100px;	
+	background: rgba(0, 0, 0,0);
+	background-image: url(tesis.jpg);
+	background-repeat: no-repeat;
+	object-position: center;
+	background-size: contain;
+
+}
+
+.image3{
+	width: 600px;
+	height: 100px;	
+	background: rgba(0, 0, 0,0);
+	background-image: url(hojaSeguridad.jpg);
+	background-repeat: no-repeat;
+	object-position: center;
+	background-size: contain;
+
+}
+
+.image4{
+	width: 600px;
+	height: 300px;	
+	background: rgba(0, 0, 0,0);
+	background-image: url(resumen.jpg);
+	background-repeat: no-repeat;
+	object-position: center;
+	background-size: contain;
+
+}
+
+.image5{
+	width: 600px;
+	height: 150px;	
+	background: rgba(0, 0, 0,0);
+	background-image: url(electronico.jpg);
+	background-repeat: no-repeat;
+	object-position: center;
+	background-size: contain;
+
+}
+
+.image6{
+	width: 600px;
+	height: 150px;	
+	background: rgba(0, 0, 0,0);
+	background-image: url(libroNoEditor.jpg);
+	background-repeat: no-repeat;
+	object-position: center;
+	background-size: contain;
+
+}
+
+.image7{
+	width: 700px;
+	height: 200px;	
+	
+	background: rgba(0, 0, 0,0);
+	background-image: url(libroEditor.jpg);
+	background-repeat: no-repeat;
+	object-position: center;
+	background-size: contain;
+
+}
+
+.image8{
+	width: 700px;
+	height: 100px;	
+	
+	background: rgba(0, 0, 0,0);
+	background-image: url(revista.jpg);
+	background-repeat: no-repeat;
+	object-position: center;
+	background-size: contain;
+
+}
+
+.secciones article p{
+	text-align: justify;
+}
+
+
+@media screen and (max-width: 700px){
+	ul.tabs li{
+		width: none;
+		flex-basis: 0;
+		flex-grow: 1;
+	}
+}
+
+@media screen and (max-width: 450px){
+	ul.tabs li a{
+		padding: 15px 0px;
+	}
+
+	ul.tabs li a .tab-text{
+		display: none;
+	}
+
+	.secciones article{
+		padding: 20px;
+	}
+}
